@@ -14,7 +14,7 @@ def run_cmd(cmd, check=True):
 
 def main():
     print("1. Fetching Lightsail access credentials...")
-    res = run_cmd("aws lightsail get-instance-access-details --instance-name university-server --region ap-south-1")
+    res = run_cmd("aws lightsail get-instance-access-details --instance-name portfolio-server --region ap-south-1")
     data = json.loads(res.stdout)["accessDetails"]
     ip = data["ipAddress"]
     user = data["username"]

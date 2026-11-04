@@ -21,6 +21,8 @@ export interface ExperienceItem {
   location: string;
   techStack: string[];
   responsibilities: string[];
+  certificateImage?: string;
+  certificateId?: string;
 }
 
 export interface Certification {
@@ -30,6 +32,7 @@ export interface Certification {
   date: string;
   credentialUrl: string;
   duration?: string;
+  certificateImage?: string;
 }
 
 export interface Achievement {
@@ -40,9 +43,27 @@ export interface Achievement {
   description: string;
   badgeText: string;
   url?: string;
+  certificateImage?: string;
 }
 
 export interface SkillCategory {
   name: string;
   skills: { name: string; level: 'Expert' | 'Advanced' | 'Proficient'; iconName?: string }[];
+}
+
+export interface VerifiedCredential {
+  id: string;
+  title: string;
+  subtitle?: string;
+  category: 'Hackathon' | 'Award' | 'Internship' | 'Certification';
+  issuer: string;
+  date: string;
+  venue?: string;
+  credentialId?: string;
+  imageSrc: string;
+  description: string;
+  badgeText: string;
+  skills: string[];
+  verificationUrl?: string;
+  verificationType: 'Physical Certificate' | 'Digital Verified' | 'Govt Registered';
 }

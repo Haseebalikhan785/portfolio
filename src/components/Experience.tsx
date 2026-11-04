@@ -1,8 +1,12 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, CheckCircle2, ExternalLink, TrendingUp, Sparkles } from './Icons';
+import { Briefcase, Calendar, MapPin, CheckCircle2, ExternalLink, TrendingUp, Sparkles, ShieldCheck, Eye, ZoomIn } from './Icons';
 import { EXPERIENCES, PERSONAL_INFO } from '../data/portfolioData';
 
-export const Experience: React.FC = () => {
+interface ExperienceProps {
+  onViewCertificate?: (id: string) => void;
+}
+
+export const Experience: React.FC<ExperienceProps> = ({ onViewCertificate }) => {
   return (
     <section id="experience" className="py-20 sm:py-28 relative border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,15 +26,25 @@ export const Experience: React.FC = () => {
             </p>
           </div>
 
-          <a
-            href={PERSONAL_INFO.linkedinExperience}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            <span>Verify on LinkedIn Experience</span>
-            <ExternalLink className="w-4 h-4" />
-          </a>
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href="/credentials"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-600/10 hover:bg-blue-600/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-xs font-bold transition"
+            >
+              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              <span>Verified Documents</span>
+            </a>
+
+            <a
+              href={PERSONAL_INFO.linkedinExperience}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              <span>Verify on LinkedIn Experience</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
         </div>
 
         {/* Timeline */}
@@ -47,9 +61,16 @@ export const Experience: React.FC = () => {
                 {/* Header Info */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                   <div>
-                    <span className="inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mb-2 border border-emerald-500/20">
-                      Software Engineering Internship
-                    </span>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                        Software Engineering Internship
+                      </span>
+                      {exp.certificateId && (
+                        <span className="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-mono font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                          {exp.certificateId}
+                        </span>
+                      )}
+                    </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                       {exp.role}
                     </h3>
@@ -99,6 +120,50 @@ export const Experience: React.FC = () => {
                     </p>
                   </div>
                 </div>
+
+                {/* Verified Certificate Section if present */}
+                {exp.certificateImage && (
+                  <div className="mt-6 p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <div
+                        onClick={() => onViewCertificate ? onViewCertificate(exp.id) : window.location.assign(`/credentials?cert=${exp.id}`)}
+                        className="relative h-16 w-20 rounded-lg overflow-hidden border border-slate-300 dark:border-slate-700 cursor-pointer group/thumb shrink-0 bg-white"
+                      >
+                        <img
+                          src={exp.certificateImage}
+                          alt="Internship Certificate"
+                          className="h-full w-full object-cover object-top group-hover/thumb:scale-105 transition"
+                        />
+                        <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/thumb:opacity-100 flex items-center justify-center transition">
+                          <ZoomIn className="w-3.5 h-3.5 text-white" />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                          <ShieldCheck className="w-4 h-4" />
+                          <span>Official Certificate of Internship Attached</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                          ISO 9001:2015 · Govt Reg No. 12417516 · Issued by Director & Signed
+                        </p>
+                      </div>
+                    </div>
+
+                    <a
+                      href={`/credentials?cert=${exp.id}`}
+                      onClick={(e) => {
+                        if (onViewCertificate) {
+                          e.preventDefault();
+                          onViewCertificate(exp.id);
+                        }
+                      }}
+                      className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-bold transition whitespace-nowrap"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>View Verified Certificate</span>
+                    </a>
+                  </div>
+                )}
 
                 {/* Tech Badges */}
                 <div className="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-2">

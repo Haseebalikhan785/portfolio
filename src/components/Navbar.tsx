@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, FileDown, Menu, X } from './Icons';
+import { Sun, Moon, FileDown, Menu, X, ShieldCheck } from './Icons';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
+  onNavigate?: (path: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
+export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -25,8 +26,17 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
     { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
     { name: 'Achievements', href: '#achievements' },
+    { name: 'Credentials', href: '/credentials', isRoute: true },
     { name: 'Contact', href: '#contact' },
   ];
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, link: { name: string; href: string; isRoute?: boolean }) => {
+    if (link.isRoute && onNavigate) {
+      e.preventDefault();
+      onNavigate(link.href);
+      setMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header
@@ -41,6 +51,12 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
           {/* Logo / Monogram */}
           <a
             href="#"
+            onClick={(e) => {
+              if (onNavigate) {
+                e.preventDefault();
+                onNavigate('/');
+              }
+            }}
             className="flex items-center gap-3 group focus:outline-none"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center font-mono font-bold text-white text-base shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
@@ -63,9 +79,15 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 transition"
+                onClick={(e) => handleLinkClick(e, link)}
+                className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                  link.isRoute
+                    ? 'text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 flex items-center gap-1.5'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60'
+                }`}
               >
-                {link.name}
+                {link.isRoute && <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />}
+                <span>{link.name}</span>
               </a>
             ))}
           </nav>
@@ -117,7 +139,10 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                handleLinkClick(e, link);
+                setMobileMenuOpen(false);
+              }}
               className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               {link.name}

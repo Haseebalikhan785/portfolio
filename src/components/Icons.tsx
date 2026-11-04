@@ -347,3 +347,45 @@ export const Clock: React.FC<IconProps> = (props) => (
     <polyline points="12 6 12 12 16 14" />
   </svg>
 );
+
+export const ZoomIn: React.FC<IconProps> = (props) => (
+  <svg {...baseProps(props)}>
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" x2="16.65" y1="21" y2="16.65" />
+    <line x1="11" x2="11" y1="8" y2="14" />
+    <line x1="8" x2="14" y1="11" y2="11" />
+  </svg>
+);
+
+export const Eye: React.FC<IconProps> = (props) => (
+  <svg {...baseProps(props)}>
+    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+
+export const ArrowLeft: React.FC<IconProps> = (props) => (
+  <svg {...baseProps(props)}>
+    <path d="m12 19-7-7 7-7" />
+    <path d="M19 12H5" />
+  </svg>
+);
+
+export const Maximize2: React.FC<IconProps> = (props) => (
+  <svg {...baseProps(props)}>
+    <polyline points="15 3 21 3 21 9" />
+    <polyline points="9 21 3 21 3 15" />
+    <line x1="21" x2="14" y1="3" y2="10" />
+    <line x1="3" x2="10" y1="21" y2="14" />
+  </svg>
+);
+
+export const FileText: React.FC<IconProps> = (props) => (
+  <svg {...baseProps(props)}>
+    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+    <line x1="10" x2="14" y1="13" y2="13" />
+    <line x1="10" x2="14" y1="17" y2="17" />
+    <line x1="10" x2="12" y1="9" y2="9" />
+  </svg>
+);

@@ -1,8 +1,12 @@
 import React from 'react';
-import { Award, ExternalLink, CheckCircle2, ShieldCheck } from './Icons';
+import { Award, ExternalLink, CheckCircle2, ShieldCheck, Eye, ZoomIn } from './Icons';
 import { CERTIFICATIONS } from '../data/portfolioData';
 
-export const Certifications: React.FC = () => {
+interface CertificationsProps {
+  onViewCertificate?: (id: string) => void;
+}
+
+export const Certifications: React.FC<CertificationsProps> = ({ onViewCertificate }) => {
   return (
     <section id="certifications" className="py-20 sm:py-28 relative border-t border-slate-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,6 +25,14 @@ export const Certifications: React.FC = () => {
               Externally validated technical certifications covering advanced algorithms, computer organization, and production Python.
             </p>
           </div>
+
+          <a
+            href="/credentials"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-600/10 hover:bg-blue-600/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-xs font-bold transition"
+          >
+            <ShieldCheck className="w-4 h-4 text-emerald-500" />
+            <span>Open Credentials Registry</span>
+          </a>
         </div>
 
         {/* Certifications Grid */}
@@ -51,16 +63,47 @@ export const Certifications: React.FC = () => {
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
                   <span>Verified Credential</span>
                 </div>
+
+                {/* Certificate Preview Thumbnail if available */}
+                {cert.certificateImage && (
+                  <div
+                    onClick={() => onViewCertificate ? onViewCertificate(cert.id) : window.location.assign(`/credentials?cert=${cert.id}`)}
+                    className="mt-4 p-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 hover:border-blue-500/40 cursor-pointer group/thumb transition"
+                  >
+                    <div className="relative h-24 w-full overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
+                      <img
+                        src={cert.certificateImage}
+                        alt={`${cert.title} Certificate`}
+                        className="h-full w-full object-cover object-top group-hover/thumb:scale-105 transition duration-300"
+                      />
+                      <div className="absolute inset-0 bg-slate-950/40 flex items-center justify-center gap-1 text-white opacity-0 group-hover/thumb:opacity-100 transition">
+                        <ZoomIn className="w-3.5 h-3.5" />
+                        <span className="text-xs font-bold">Enlarge</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+              <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+                {cert.certificateImage && (
+                  <button
+                    onClick={() => onViewCertificate ? onViewCertificate(cert.id) : window.location.assign(`/credentials?cert=${cert.id}`)}
+                    className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-bold transition"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>View Certificate Document</span>
+                    <Eye className="w-3.5 h-3.5 ml-auto" />
+                  </button>
+                )}
+
                 <a
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 hover:text-white dark:hover:text-white text-xs font-semibold border border-slate-200 dark:border-slate-700/60 transition group"
                 >
-                  <span>Verify Certificate</span>
+                  <span>Verify Online Credential</span>
                   <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition" />
                 </a>
               </div>
