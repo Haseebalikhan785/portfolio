@@ -1,0 +1,321 @@
+%-------------------------
+% ATS-Optimized Resume
+% Resume Owner: Haseeb Ali
+% Template Based on: https://github.com/sb2nov/resume
+% Original Template License: MIT
+% Compile using pdfLaTeX or Tectonic
+%-------------------------
+
+\documentclass[a4paper,11pt]{article}
+
+% Fonts and text extraction
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{iftex}
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+% Professional Accent Blue for Interactive Links
+\definecolor{LinkBlue}{RGB}{10, 102, 194}
+
+% PDF metadata
+\hypersetup{
+    pdftitle={Haseeb Ali - Resume},
+    pdfauthor={Haseeb Ali},
+    pdfsubject={Software Development Resume}
+}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\linespread{1.10}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% Section formatting
+\titleformat{\section}{
+    \vspace{-4pt}\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+    \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+    \vspace{-2pt}\item
+    \textbf{#1} \hfill #2 \\
+    \textit{\small #3} \hfill \textit{\small #4}
+    \vspace{-6pt}
+}
+
+\newcommand{\resumeLine}[2]{
+    \item
+    \small #1 \hfill #2
+    \vspace{-3pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \small #1 \hfill #2
+    \vspace{-8pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{
+    \begin{itemize}[leftmargin=0.15in, label={}]
+}
+
+\newcommand{\resumeSubHeadingListEnd}{
+    \end{itemize}
+}
+
+\newcommand{\resumeItemListStart}{
+    \begin{itemize}[leftmargin=0.2in]
+}
+
+\newcommand{\resumeItemListEnd}{
+    \end{itemize}\vspace{-5pt}
+}
+
+\renewcommand\labelitemii{\textbullet}
+
+\pagestyle{empty}
+
+%-------------------------------------------
+%%%%%% RESUME STARTS HERE %%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+
+\begin{center}
+    {\Huge \textbf{Haseeb Ali}} \\ \vspace{3pt}
+    \small Diploma in Computer Science and Engineering \textbar{}
+    Lovely Professional University \\ \vspace{1pt}
+    \small +91 6306917705 \textbar{}
+    \href{mailto:haseebalikhan785@gmail.com}
+    {haseebalikhan785@gmail.com} \textbar{}
+    Punjab, India \\ \vspace{1pt}
+    Portfolio:
+    \href{https://haseeb-portfolio.privatedns.org/}
+    {haseeb-portfolio.privatedns.org}
+    \textbar{} GitHub:
+    \href{https://github.com/Haseebalikhan785}
+    {github.com/Haseebalikhan785}
+    \textbar{} LinkedIn:
+    \href{https://www.linkedin.com/in/haseebalikhan785/}
+    {linkedin.com/in/haseebalikhan785}
+\end{center}
+
+%-----------ABOUT-----------
+
+\section{ABOUT \texorpdfstring{$|$ \normalfont\small\href{https://haseeb-portfolio.privatedns.org/}{\textcolor{LinkBlue}{Click}}}{}}
+
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    Detail-oriented Computer Science student proficient in
+    Java, Python, Firebase, and modern web technologies.
+    Experienced in building Android and web applications
+    from concept to deployment. National-level hackathon
+    contributor. Eager to apply strong problem-solving
+    skills in an entry-level software development role.
+    }}
+\end{itemize}
+
+%-----------EDUCATION-----------
+
+\section{EDUCATION \texorpdfstring{$|$ \normalfont\small\href{https://www.linkedin.com/in/haseebalikhan785/details/education/}{\textcolor{LinkBlue}{Click}}}{}}
+
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+        {Lovely Professional University}
+        {Punjab, India}
+        {Diploma in Computer Science and Engineering; CGPA: 9.17/10}
+        {2024 -- 2027}
+
+\resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+
+\section{EXPERIENCE \texorpdfstring{$|$ \normalfont\small\href{https://www.linkedin.com/in/haseebalikhan785/details/experience/?isSelfProfile=true&vieweeProfileId=ACoAAFQXnlgB6y508bob_l1VPpT_CdWeBp3uK0s}{\textcolor{LinkBlue}{Click}}}{}}
+
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+        {Python Intern}
+        {Jun 2026 -- Jul 2026}
+        {Prabhutwa Computer Education Pvt. Ltd.}
+        {India}
+
+    \resumeItemListStart
+        \resumeItem{Performed data-cleaning tasks and wrote
+        Python automation scripts using JupyterLab across
+        a 30-day internship program.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+
+\section{PROJECTS \texorpdfstring{$|$ \normalfont\small\href{https://github.com/Haseebalikhan785?tab=repositories}{\textcolor{LinkBlue}{Click}}}{}}
+
+\resumeSubHeadingListStart
+
+    % CitizenAssist AI
+
+    \resumeProjectHeading
+        {\textbf{\href{https://ai-2.duckdns.org/}{CitizenAssist AI}} $|$
+        \href{https://ai-2.duckdns.org/}{\textcolor{LinkBlue}{Click}} $|$
+        \emph{HTML, CSS, JavaScript, AI Integration}}
+        {Oct -- Nov 2026}
+
+    \resumeItemListStart
+
+        \resumeItem{Developed an AI-integrated web application
+        at GRAVITON Hackathon 2026 featuring government-scheme
+        discovery, eligibility verification, benefit comparison,
+        multilingual support, and document-checklist generation.}
+
+    \resumeItemListEnd
+
+    % BuildMart
+
+    \resumeProjectHeading
+        {\textbf{\href{https://github.com/Haseebalikhan785/BuildMart}{BuildMart}} $|$
+        \href{https://github.com/Haseebalikhan785/BuildMart}{\textcolor{LinkBlue}{Click}} $|$
+        \emph{Java, Firebase, Android Studio}}
+        {2026}
+
+    \resumeItemListStart
+
+        \resumeItem{Engineered an Android marketplace application
+        for construction materials with product search, user
+        authentication, shopping cart, and order management
+        powered by Firebase.}
+
+        \resumeItem{Showcased project at INNO-TECH 2026,
+        Pushpa Gujral Science City.}
+
+    \resumeItemListEnd
+
+    % University Management System
+
+    \resumeProjectHeading
+        {\textbf{\href{https://university-portal.privatedns.org}{University Management System}} $|$
+        \href{https://university-portal.privatedns.org}{\textcolor{LinkBlue}{Click}} $|$
+        \emph{Python, MySQL, Flask}}
+        {2026}
+
+    \resumeItemListStart
+
+        \resumeItem{Engineered a cloud-native university administration web portal with role-based dashboards for Super Admin, Faculty, and Students.}
+
+        \resumeItem{Implemented secure modules for student registration, attendance tracking, and academic records backed by MySQL database.}
+
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------COMPETITIONS AND ACHIEVEMENTS-----------
+
+\section{COMPETITIONS AND ACHIEVEMENTS \texorpdfstring{$|$ \normalfont\small\href{https://www.linkedin.com/in/haseebalikhan785/recent-activity/all/}{\textcolor{LinkBlue}{Click}}}{}}
+
+\resumeSubHeadingListStart
+
+    \resumeLine
+        {\textbf{GRAVITON Hackathon 2026} $|$
+        CGC University, Mohali}
+        {Oct -- Nov 2026}
+
+    \resumeItemListStart
+        \resumeItem{Built CitizenAssist AI, an AI-powered
+        civic-services platform, at a national-level
+        hackathon (31 Oct -- 1 Nov 2026).}
+    \resumeItemListEnd
+
+    \resumeLine
+        {\textbf{INNO-TECH 2026} $|$
+        Pushpa Gujral Science City}
+        {Mar 2026}
+
+    \resumeItemListStart
+        \resumeItem{Awarded Certificate of Merit for
+        demonstrating BuildMart at the technology
+        innovation event.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+
+\section{TECHNICAL SKILLS \texorpdfstring{$|$ \normalfont\small\href{https://www.linkedin.com/in/haseebalikhan785/details/skills/}{\textcolor{LinkBlue}{Click}}}{}}
+
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+
+    \textbf{Programming Languages:}
+    Java, Python, C, C++ \\
+
+    \textbf{Web Technologies:}
+    HTML, CSS, JavaScript, PHP \\
+
+    \textbf{Mobile Development:}
+    Android Development (Java) \\
+
+    \textbf{Tools and Platforms:}
+    Git, GitHub, Firebase, AWS, VS Code,
+    Android Studio, JupyterLab
+
+    }}
+\end{itemize}
+
+%-----------CERTIFICATIONS-----------
+
+\section{CERTIFICATIONS}
+
+\resumeSubHeadingListStart
+
+    \resumeLine
+        {\textbf{\href{https://lnkd.in/p/gVvr2G_C}{Alpha: Data Structures and Algorithms with Java}} $|$
+        \href{https://lnkd.in/p/gVvr2G_C}{\textcolor{LinkBlue}{Click}} $|$
+        Apna College}
+        {Mar -- Aug 2026}
+
+    \resumeLine
+        {\textbf{\href{https://www.udemy.com/certificate/UC-271bcb87-463c-42b1-91a1-53135c4f30f2/}{Computer Architecture and Organization}} $|$
+        \href{https://www.udemy.com/certificate/UC-271bcb87-463c-42b1-91a1-53135c4f30f2/}{\textcolor{LinkBlue}{Click}} $|$
+        Udemy, 24 Hours}
+        {Feb 2026}
+
+    \resumeLine
+        {\textbf{\href{https://www.udemy.com/certificate/UC-ea9268be-2c68-4598-ad5b-0c4f45126498/}{The Complete Python Bootcamp: From Zero to Hero}} $|$
+        \href{https://www.udemy.com/certificate/UC-ea9268be-2c68-4598-ad5b-0c4f45126498/}{\textcolor{LinkBlue}{Click}} $|$
+        Udemy, 22.5 Hours}
+        {Aug 2026}
+
+\resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}
